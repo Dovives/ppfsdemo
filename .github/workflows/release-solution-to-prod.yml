@@ -29,7 +29,9 @@ on:
        required: true
        default: out/release
   release:
-    types: [created] 
+    types: [created]
+    
+  
 
 env:
 #edit your values here
@@ -63,7 +65,7 @@ jobs:
       with:
         environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.PowerPlatformSPN }}
+        client-secret: ${{ secrets.PPFS_SECRET }}
         tenant-id: ${{env.TENANT_ID}}
         solution-file: ${{ github.event.inputs.solution_outbound_folder}}/${{ github.event.inputs.solution_name }}.zip
         force-overwrite: true
@@ -74,7 +76,7 @@ jobs:
       with:
         environment-url: ${{env.BUILD_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.PowerPlatformSPN }}
+        client-secret: ${{ secrets.PPFS_SECRET }}
         tenant-id: ${{env.TENANT_ID}}
         solution-name: ${{ github.event.inputs.solution_name }}
         managed: true
@@ -108,7 +110,7 @@ jobs:
       with:
         environment-url: ${{env.PRODUCTION_ENVIRONMENT_URL}}
         app-id: ${{env.CLIENT_ID}}
-        client-secret: ${{ secrets.PowerPlatformSPN }}
+        client-secret: ${{ secrets.PPFS_SECRET }}
         tenant-id: ${{env.TENANT_ID}}
         solution-file: ${{ github.event.inputs.solution_release_folder}}/${{ github.event.inputs.solution_name }}.zip
         force-overwrite: true
